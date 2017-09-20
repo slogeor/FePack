@@ -1,3 +1,3 @@
 exports.config = {
-  home: './views/home/index.js'
+  demo: './views/demo/index.js'
 };

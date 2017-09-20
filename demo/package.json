@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/slogeor/webpack-demo/issues"
   },
-  "homepage": "https://github.com/slogeor/webpack-demo#readme"
+  "homepage": "https://github.com/slogeor/webpack-demo#readme",
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.6.0"
+  }
 }

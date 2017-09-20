@@ -5,7 +5,7 @@ const config = require('./config.js');
 const DIST_DIR = config.DIST_DIR;
 
 module.exports = merge(common, {
-  devtool: 'inline-source-map',
+  // devtool: 'inline-source-map',
   devServer: {
     contentBase: DIST_DIR
   }
