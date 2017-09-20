@@ -1,7 +1,7 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const config = require('./config.js');
-const entry = require('./entry.config.js');
+const entry = require('../entry.config.js');
 
 // 产出路径
 const DIST_PATH = config.DIST_PATH;
