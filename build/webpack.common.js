@@ -58,7 +58,7 @@ module.exports = {
                 use: [{
                     loader: 'style-loader'
                 },{
-                    loader: 'css-stloader',
+                    loader: 'css-loader',
                     options: {
                         modules: true,
                         camelCase: true,
