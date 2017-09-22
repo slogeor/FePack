@@ -1,4 +1,4 @@
-import './style.scss';
+import '../../../styles/index.scss';
 import style from './main.css';
 
 const template = [];

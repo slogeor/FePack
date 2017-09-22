@@ -1,6 +1,11 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 提取公共 CSS
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+// 常量
 const config = require('./config.js');
+// 入口文件配置
 const entry = require('../entry.config.js');
 
 // 产出路径
@@ -36,16 +41,11 @@ module.exports = {
                  *  }
                  */
                 test: /\.scss$/,
-                use: [{
-                    // 将 JS 字符串生成为 style 节点
-                    loader: "style-loader"
-                },{
-                    // 将 CSS 转化成 CommonJS 模块
-                    loader: "css-loader"
-                }, {
-                    // 将 Sass 编译成 CSS
-                    loader: "sass-loader"
-                }]
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
+                    use: ['css-loader', 'sass-loader']
+                })
             },
             {
                 /**
@@ -67,5 +67,8 @@ module.exports = {
                 }]
             }
         ]
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin('base.css')
+      ]
 };
