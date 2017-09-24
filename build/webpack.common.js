@@ -23,7 +23,8 @@ const webpackConfig = {
     entry: entry.config,
     output: {
         filename: '[name].bundle.js',
-        path: DIST_PATH
+        path: DIST_PATH,
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -82,10 +83,10 @@ const webpackConfig = {
     },
     plugins: [
         // 删除内容
-        new CleanWebpackPlugin([DIST_PATH],  {
-            // dist is outside of the project root. Skipping...
-            allowExternal: true,
-        }),
+        // new CleanWebpackPlugin([DIST_PATH],  {
+        //     // dist is outside of the project root. Skipping...
+        //     allowExternal: true,
+        // }),
         // 抽取公共的css
         new ExtractTextPlugin('base.css'),
     ],

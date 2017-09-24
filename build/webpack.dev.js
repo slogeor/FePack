@@ -6,16 +6,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.js');
 const config = require('./config.js');
 
-const DIST_DIR = config.DIST_DIR;
-
 const extendConfig = common.extendConfig;
 delete common.extendConfig;
 
 const webpackConfig = merge(common, {
 	// devtool: 'inline-source-map',
-  	devServer: {
-    	contentBase: DIST_DIR
-  	}
+	devServer:{
+		inline: true,
+	}
 });
 
 // HTML 模板
