@@ -1,19 +1,22 @@
+// 清除目录文件
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// 生成 HTML 模板
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 提取公共 CSS
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// 工具方法
+const utils = require('./util');
 
 // 常量
 const config = require('./config.js');
 // 入口文件配置
 const entry = require('../entry.config.js');
+// 模板配置
+const htmlPluginConfig = require('../html.config');
 
 // 产出路径
 const DIST_PATH = config.DIST_PATH;
 const SRC_PATH = config.SRC_PATH;
 
-module.exports = {
+const webpackConfig = {
   // 基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
     context: SRC_PATH,
     entry: entry.config,
@@ -77,7 +80,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('base.css')
-        // new HtmlWebpackPlugin(),
-    ]
+        // 抽取公共的css
+        new ExtractTextPlugin('base.css'),
+    ],
+    // 额外的配置参数
+    extendConfig: {
+        htmlPliugins: utils.generateHtmlPlugin(htmlPluginConfig.config),
+    }
 };
+
+module.exports = webpackConfig;
