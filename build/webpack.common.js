@@ -1,4 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+// 生成 HTML 模板
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 提取公共 CSS
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -70,7 +71,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /(node_modules)/,
                 use: {
-                  loader: 'babel-loader',
+                    loader: 'babel-loader',
+                    options: {
+                      presets: ['env']
+                    }
                 }
             }
         ]
