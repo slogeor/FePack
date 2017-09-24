@@ -21,12 +21,15 @@
   },
   "homepage": "https://github.com/slogeor/webpack-pack#readme",
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "webpack": "^3.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.0",

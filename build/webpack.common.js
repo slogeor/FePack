@@ -65,6 +65,16 @@ module.exports = {
                         localIdentName: '[path][name]__[local]--[hash:base64:5]'
                     }
                 }]
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: ['env']
+                  }
+                }
             }
         ]
     },
