@@ -12,8 +12,9 @@ const entry = require('../entry.config.js');
 // 模板配置
 const htmlPluginConfig = require('../html.config');
 
-// 产出路径
+// dist 路径
 const DIST_PATH = config.DIST_PATH;
+// src 路径
 const SRC_PATH = config.SRC_PATH;
 
 const webpackConfig = {
@@ -80,6 +81,11 @@ const webpackConfig = {
         ]
     },
     plugins: [
+        // 删除内容
+        new CleanWebpackPlugin([DIST_PATH],  {
+            // dist is outside of the project root. Skipping...
+            allowExternal: true,
+        }),
         // 抽取公共的css
         new ExtractTextPlugin('base.css'),
     ],
