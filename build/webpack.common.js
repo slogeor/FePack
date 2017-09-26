@@ -1,3 +1,5 @@
+// 自动补全css3前缀
+const autoprefixer = require('autoprefixer');
 // 清除目录文件
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // 提取公共 CSS
@@ -50,7 +52,7 @@ const webpackConfig = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
-                    use: ['css-loader', 'sass-loader']
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
                 })
             },
             {
@@ -70,6 +72,8 @@ const webpackConfig = {
                         camelCase: true,
                         localIdentName: '[path][name]__[local]--[hash:base64:5]'
                     }
+                }, {
+                    loader: 'postcss-loader'
                 }]
             },
             {
