@@ -1,5 +1,5 @@
-import '../../../styles/index.scss';
-import { config, core } from '../../../scripts/index.js';
+import 'STYLES/index.scss';
+import { config, core } from 'SCRIPTS/index.js';
 import  style from './main.css';
 import './async.js';
 import { util } from './lib.js';

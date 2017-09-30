@@ -19,6 +19,10 @@ const htmlPluginConfig = require('../html.config');
 const DIST_PATH = config.DIST_PATH;
 // src 路径
 const SRC_PATH = config.SRC_PATH;
+// scripts 路径
+const SCRIPTS_PATH = config.SCRIPTS_PATH;
+// styles 路径
+const STYLES_PATH = config.STYLES_PATH;
 
 const webpackConfig = {
   // 基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
@@ -118,6 +122,12 @@ const webpackConfig = {
             // 这个配置保证没其它的模块会打包进 vendor chunk
         }),
     ],
+    resolve: {
+        alias: {
+            SCRIPTS: SCRIPTS_PATH,
+            STYLES: STYLES_PATH,
+        }
+    },
     // 额外的配置参数
     extendConfig: {
         htmlPliugins: utils.generateHtmlPlugin(htmlPluginConfig.config),
