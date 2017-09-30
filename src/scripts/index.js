@@ -1,2 +1,4 @@
-import ('./core.js');
-import ('./util.js');
+export { core } from './core';
+export { util } from './util';
+export { config } from './config';
+

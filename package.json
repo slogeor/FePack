@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config build/webpack.dev.js",
-    "start": "webpack --config build/webpack.dev.js && webpack-dev-server --inline --hot  --config build/webpack.dev.js",
+    "start": "webpack-dev-server --inline --hot  --config build/webpack.dev.js",
     "build": "webpack --config build/webpack.prod.js"
   },
   "repository": {
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/slogeor/webpack-pack#readme",
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "jquery": "^3.2.1",
     "webpack": "^3.6.0"
   },
   "devDependencies": {

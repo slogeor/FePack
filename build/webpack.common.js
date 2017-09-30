@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 // 自动补全css3前缀
 const autoprefixer = require('autoprefixer');
 // 清除目录文件
@@ -32,22 +33,22 @@ const webpackConfig = {
         rules: [
             {
                 /**
-                 * @desc 解析 Sass 文件
-                 * @example
-                 * // index.js
-                 * import './style.scss';
-                 * <header class="header">hello <span class="h3">webpack</span></header>
-                 *
-                 * // style.scss
-                 * .header {
-                 *      font-size: 30px;
-                 *      color: #f00;
-                 *      .h3 {
-                 *          font-size: 24px;
-                 *          color: #000;
-                 *      }
-                 *  }
-                 */
+                * @desc 解析 Sass 文件
+                * @example
+                * // index.js
+                * import './style.scss';
+                * <header class="header">hello <span class="h3">webpack</span></header>
+                *
+                * // style.scss
+                * .header {
+                *      font-size: 30px;
+                *      color: #f00;
+                *      .h3 {
+                *          font-size: 24px;
+                *          color: #000;
+                *      }
+                *  }
+                */
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
@@ -57,11 +58,11 @@ const webpackConfig = {
             },
             {
                 /**
-                 * @desc 解析 css 文件
-                 * @param modules: true，启用 CSS 模块， JS 引用需要动态引用
-                 * @param localIdentName: 生成的 ClassName
-                 * @param camelCase: true，以驼峰化式命名导出类名，需要配合modules参数使用
-                 */
+                * @desc 解析 css 文件
+                * @param modules: true，启用 CSS 模块， JS 引用需要动态引用
+                * @param localIdentName: 生成的 ClassName
+                * @param camelCase: true，以驼峰化式命名导出类名，需要配合modules参数使用
+                */
                 test: /\.css$/,
                 use: [{
                     loader: 'style-loader'
@@ -87,17 +88,24 @@ const webpackConfig = {
     },
     plugins: [
         // 删除内容
-        new CleanWebpackPlugin([DIST_PATH],  {
-            // dist is outside of the project root. Skipping...
-            allowExternal: true,
-        }),
+        // new CleanWebpackPlugin([DIST_PATH],  {
+        //     // dist is outside of the project root. Skipping...
+        //     allowExternal: true,
+        // }),
         // 抽取公共的css
         new ExtractTextPlugin('base.css'),
+        // 抽取公共的JS
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: Infinity,
+            // 随着 entrie chunk 越来越多，
+            // 这个配置保证没其它的模块会打包进 vendor chunk
+        }),
     ],
     // 额外的配置参数
     extendConfig: {
         htmlPliugins: utils.generateHtmlPlugin(htmlPluginConfig.config),
-    }
+    },
 };
 
 module.exports = webpackConfig;
