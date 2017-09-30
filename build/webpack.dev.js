@@ -10,7 +10,7 @@ const extendConfig = common.extendConfig;
 delete common.extendConfig;
 
 const webpackConfig = merge(common, {
-	// devtool: 'inline-source-map',
+	devtool: 'inline-source-map',
 	devServer:{
 		contentBase: config.DIST_DIR,
 		inline: true,

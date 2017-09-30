@@ -53,7 +53,22 @@ const webpackConfig = {
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
-                    use: ['css-loader', 'postcss-loader', 'sass-loader']
+                    use: [{
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                        }
+                    },{
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true,
+                        }
+                    },{
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true,
+                        }
+                    }]
                 })
             },
             {
@@ -71,6 +86,7 @@ const webpackConfig = {
                     options: {
                         modules: true,
                         camelCase: true,
+                        sourceMap: true,
                         localIdentName: '[path][name]__[local]--[hash:base64:5]'
                     }
                 }, {

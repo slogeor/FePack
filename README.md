@@ -8,6 +8,7 @@
 * 自动刷新浏览器和热模块替换
 * 自动补全浏览器前缀
 * 抽取vendor
+* 引入 sourceMap，支持 JS、CSS、SASS
 
 ### 问题
 
