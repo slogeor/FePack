@@ -29,7 +29,7 @@ const webpackConfig = {
     context: SRC_PATH,
     entry: entry.config,
     output: {
-        filename: '[name].bundle.js',
+        filename: utils.getFileName(),
         path: DIST_PATH,
         publicPath: '/'
     },
@@ -113,14 +113,14 @@ const webpackConfig = {
         //     allowExternal: true,
         // }),
         // 抽取公共的css
-        new ExtractTextPlugin('base.css'),
+        new ExtractTextPlugin(utils.getExtractCSSName()),
         // 抽取公共的JS
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            minChunks: Infinity,
-            // 随着 entrie chunk 越来越多，
-            // 这个配置保证没其它的模块会打包进 vendor chunk
+            names: ['manifest', 'vendor'].reverse(),
+            minChunks: Infinity
         }),
+        // 对模块路径进行 MD5 摘要
+        new webpack.HashedModuleIdsPlugin()
     ],
     resolve: {
         alias: {

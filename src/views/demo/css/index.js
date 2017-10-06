@@ -1,4 +1,4 @@
-import '../../../styles/index.scss';
+import 'STYLES/index.scss';
 // import './style.scss';
 import style from './main.css';
 

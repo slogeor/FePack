@@ -20,3 +20,22 @@ exports.generateHtmlPlugin = (config) => {
 	}
 	return htmlConfig;
 };
+
+exports.getFileName = (env = 'DEV')=> {
+	if (env === 'DEV') {
+		// return '[name].js';
+		return '[name].[chunkhash:8].js';
+	} else {
+		return '[name].[chunkhash:8].js';
+	}
+};
+
+exports.getExtractCSSName = (env = 'DEV')=> {
+	if (env === 'DEV') {
+		// return 'base.css';
+		return 'base.[contenthash:8].css';
+	} else {
+		return 'base.[contenthash:8].css';
+	}
+}
+
