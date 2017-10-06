@@ -99,7 +99,7 @@ const webpackConfig = {
             },
             {
                 test: /\.js$/,
-                exclude: /(node_modules)/,
+                exclude: /(node_modules|build)/,
                 use: {
                     loader: 'babel-loader'
                 }

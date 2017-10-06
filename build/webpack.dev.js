@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 //  wepack config merge
 const merge = require('webpack-merge');
 // HTML 插件
@@ -15,7 +16,7 @@ const webpackConfig = merge(common, {
 		contentBase: config.DIST_DIR,
 		inline: true,
 		hot:true
-	}
+	},
 });
 
 // HTML 模板

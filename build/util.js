@@ -1,5 +1,6 @@
 const glob = require('glob');
 const path = require('path');
+const NODE_ENV = process.env.NODE_ENV;
 
 // 获取全路径
 exports.fullPath = function(dir) {
@@ -21,8 +22,8 @@ exports.generateHtmlPlugin = (config) => {
 	return htmlConfig;
 };
 
-exports.getFileName = (env = 'DEV')=> {
-	if (env === 'DEV') {
+exports.getFileName = ()=> {
+	if (NODE_ENV === 'DEV') {
 		return '[name].js';
 		// return '[name].[chunkhash:8].js';
 	} else {
@@ -31,7 +32,7 @@ exports.getFileName = (env = 'DEV')=> {
 };
 
 exports.getExtractCSSName = (env = 'DEV')=> {
-	if (env === 'DEV') {
+	if (NODE_ENV === 'DEV') {
 		return 'base.css';
 		// return 'base.[contenthash:8].css';
 	} else {
