@@ -113,10 +113,10 @@ const webpackConfig = {
     },
     plugins: [
         // 删除内容
-        // new CleanWebpackPlugin([DIST_PATH],  {
-        //     // dist is outside of the project root. Skipping...
-        //     allowExternal: true,
-        // }),
+        new CleanWebpackPlugin([DIST_PATH],  {
+            // dist is outside of the project root. Skipping...
+            allowExternal: true,
+        }),
         // 抽取公共的css
         new ExtractTextPlugin(utils.getExtractCSSName()),
         // 抽取公共的JS
