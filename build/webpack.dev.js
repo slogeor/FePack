@@ -11,7 +11,7 @@ const webpackConfig = merge(common, {
 		contentBase: constant.DIST_DIR,
 		inline: true,
 		hot:true
-	},
+	}
 });
 
 module.exports = webpackConfig;

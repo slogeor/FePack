@@ -22,6 +22,7 @@ exports.generateHtmlPlugin = (config) => {
 	return htmlConfig;
 }
 
+// 输出 filename 的格式
 exports.getFileName = ()=> {
 	if (NODE_ENV === 'DEV') {
 		return '[name].js';
@@ -31,6 +32,7 @@ exports.getFileName = ()=> {
 	}
 }
 
+// 输出 css 的格式
 exports.getExtractCSSName = (env = 'DEV')=> {
 	if (NODE_ENV === 'DEV') {
 		return 'base.css';
@@ -40,16 +42,14 @@ exports.getExtractCSSName = (env = 'DEV')=> {
 	}
 }
 
+// html配置
 exports.getHtmlPlugin = (config) => {
-	if (NODE_ENV === 'DEV') {
-		return config;
-	} else {
+	if (NODE_ENV !== 'DEV') {
 		config.minify = {
 			removeComments: true,
 			collapseWhitespace: true,
 			removeAttributeQuotes: true
 		};
-		return config;
 	}
+	return config;
 }
-

@@ -1,0 +1,15 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    //必须使用合法的typeof的值
+    "valid-typeof": 2,
+    //var必须放在作用域顶部
+    "vars-on-top": 2,
+    //禁止混用tab和空格
+    "no-mixed-spaces-and-tabs": [2, false],
+    //字符串最大长度
+    "max-len": [0, 80, 4],
+    //立即执行函数表达式的小括号风格
+    "wrap-iife": [2, "inside"]
+  }
+}

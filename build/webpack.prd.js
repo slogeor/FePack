@@ -1,7 +1,9 @@
 const merge = require('webpack-merge');
+// JS压缩混淆
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// CSS 压缩
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 const common = require('./webpack.common.js');
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = merge(common, {
 	devtool: 'cheap-module-source-map',
@@ -12,11 +14,10 @@ module.exports = merge(common, {
 			},
 			sourceMap: true
 		}),
-		// 压缩css
 		new OptimizeCSSPlugin({
 			cssProcessorOptions: {
 				safe: true
 			}
 		}),
-  	]
+  ]
 });

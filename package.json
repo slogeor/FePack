@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "export NODE_ENV=DEV && webpack --config build/webpack.dev.js",
     "start": "export NODE_ENV=DEV && webpack-dev-server --inline --hot  --config build/webpack.dev.js",
-    "build": "export NODE_ENV=PRD && webpack --config build/webpack.prd.js"
+    "build": "export NODE_ENV=PRD && webpack --config build/webpack.prd.js",
+    "eslint": "echo \"Checking code style, please wait ...\" && eslint ./src *.js --cache"
   },
   "repository": {
     "type": "git",
@@ -28,10 +29,13 @@
   "devDependencies": {
     "autoprefixer": "^7.1.4",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.7",
+    "eslint": "^4.8.0",
+    "eslint-loader": "^1.9.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",

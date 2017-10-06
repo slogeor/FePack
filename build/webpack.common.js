@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-// 自动补全css3前缀
+// 自动补全CSS浏览器前缀
 const autoprefixer = require('autoprefixer');
 // 清除目录文件
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -31,107 +31,109 @@ const htmlPliugins = utils.generateHtmlPlugin(htmlPluginConfig.config);
 
 const webpackConfig = {
   // 基础目录，绝对路径，用于从配置中解析入口起点(entry point)和 loader
-    context: SRC_PATH,
-    entry: entry.config,
+  context: SRC_PATH,
+  entry: entry.config,
     output: {
-        filename: utils.getFileName(),
-        path: DIST_PATH,
-        publicPath: '/'
+      filename: utils.getFileName(),
+      path: DIST_PATH,
+      publicPath: '/'
     },
     module: {
-        rules: [
-            {
-                /**
-                * @desc 解析 Sass 文件
-                * @example
-                * // index.js
-                * import './style.scss';
-                * <header class="header">hello <span class="h3">webpack</span></header>
-                *
-                * // style.scss
-                * .header {
-                *      font-size: 30px;
-                *      color: #f00;
-                *      .h3 {
-                *          font-size: 24px;
-                *          color: #000;
-                *      }
-                *  }
-                */
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                        }
-                    },{
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true,
-                        }
-                    },{
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true,
-                        }
-                    }]
-                })
-            },
-            {
-                /**
-                * @desc 解析 css 文件
-                * @param modules: true，启用 CSS 模块， JS 引用需要动态引用
-                * @param localIdentName: 生成的 ClassName
-                * @param camelCase: true，以驼峰化式命名导出类名，需要配合modules参数使用
-                */
-                test: /\.css$/,
-                use: [{
-                    loader: 'style-loader'
-                },{
-                    loader: 'css-loader',
-                    options: {
-                        modules: true,
-                        camelCase: true,
-                        sourceMap: true,
-                        localIdentName: '[path][name]__[local]--[hash:base64:5]'
-                    }
-                }, {
-                    loader: 'postcss-loader'
-                }]
-            },
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|build)/,
-                use: {
-                    loader: 'babel-loader'
-                }
-            }
-        ]
+			rules: [
+				{
+					/**
+					* @desc 解析 Sass 文件
+					* @example
+					* // index.js
+					* import './style.scss';
+					* <header class="header">hello <span class="h3">webpack</span></header>
+					*
+					* // style.scss
+					* .header {
+					*   font-size: 30px;
+					*    	color: #f00;
+					*     .h3 {
+					*        font-size: 24px;
+					*        color: #000;
+					*     }
+					*  }
+					*/
+					test: /\.scss$/,
+					use: ExtractTextPlugin.extract({
+						fallback: 'style-loader',
+						//如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
+						use: [{
+							loader: 'css-loader',
+							options: {
+								sourceMap: true,
+							}
+						},{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: true,
+							}
+						},{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true,
+							}
+						}]
+					})
+				},
+				{
+					/**
+					* @desc 解析 css 文件
+					* @param modules: true，启用 CSS 模块， JS 引用需要动态引用
+					* @param localIdentName: 生成的 ClassName
+					* @param camelCase: true，以驼峰化式命名导出类名，需要配合modules参数使用
+					*/
+					test: /\.css$/,
+					use: [{
+						loader: 'style-loader'
+					},{
+						loader: 'css-loader',
+						options: {
+							modules: true,
+							camelCase: true,
+							sourceMap: true,
+							localIdentName: '[path][name]__[local]--[hash:base64:5]'
+						}
+					}, {
+						loader: 'postcss-loader'
+					}]
+				},
+				{
+					test: /\.js$/,
+					exclude: /(node_modules|build)/,
+					use: {
+						loader: 'babel-loader'
+					}
+				}
+			]
     },
     plugins: [
-        // 删除内容
-        new CleanWebpackPlugin([DIST_PATH],  {
-            // dist is outside of the project root. Skipping...
-            allowExternal: true,
-        }),
-        // 抽取公共的css
-        new ExtractTextPlugin(utils.getExtractCSSName()),
-        // 抽取公共的JS
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['manifest', 'vendor'].reverse(),
-            minChunks: Infinity
-        }),
-        // 对模块路径进行 MD5 摘要
-        new webpack.HashedModuleIdsPlugin()
+			// 删除内容
+			new CleanWebpackPlugin([DIST_PATH],  {
+				// dist is outside of the project root. Skipping...
+				allowExternal: true,
+			}),
+			// 跳过编译时出错的代码并记录，使编译后运行时的包不会发生错误
+			new webpack.NoEmitOnErrorsPlugin(),
+			// 抽取公共的css
+			new ExtractTextPlugin(utils.getExtractCSSName()),
+			// 抽取公共的JS
+			new webpack.optimize.CommonsChunkPlugin({
+				names: ['manifest', 'vendor'].reverse(),
+				minChunks: Infinity
+			}),
+			// 对模块路径进行 MD5 摘要
+			new webpack.HashedModuleIdsPlugin()
     ],
     resolve: {
-        alias: {
-            SCRIPTS: SCRIPTS_PATH,
-            STYLES: STYLES_PATH,
-        }
+			alias: {
+				SCRIPTS: SCRIPTS_PATH,
+				STYLES: STYLES_PATH,
+			}
     }
 };
 
@@ -151,10 +153,8 @@ htmlPliugins.forEach(function (htmlConfig) {
 	* @param chunks: 允许只添加某些块 (比如，仅仅 unit test 块)
 	* @param chunksSortMode: 允许控制块在添加到页面之前的排序方式，支持的值：'none' | 'default' | {function}-default:'auto'
 	* @param excludeChunks: 允许跳过某些块，(比如，跳过单元测试的块)
-    */
-
+  */
 	webpackConfig.plugins.push(new HtmlWebpackPlugin(utils.getHtmlPlugin(htmlConfig)));
 });
-
 
 module.exports = webpackConfig;
