@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "export NODE_ENV=DEV && webpack --config build/webpack.dev.js",
     "start": "export NODE_ENV=DEV && webpack-dev-server --inline --hot  --config build/webpack.dev.js",
-    "build": "export NODE_ENV=PRD && webpack --config build/webpack.prod.js"
+    "build": "export NODE_ENV=PRD && webpack --config build/webpack.prd.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
     "postcss-loader": "^2.0.6",
     "precss": "^2.0.0",
     "sass-loader": "^6.0.6",

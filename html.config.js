@@ -10,7 +10,8 @@ const config = {
     chunks:['demoES6'].concat(commonChunks),
     title: 'es6页面',
     filename: 'es6.html',
-  }
+  },
+
 };
 
 module.exports = {

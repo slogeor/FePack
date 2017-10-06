@@ -20,7 +20,7 @@ exports.generateHtmlPlugin = (config) => {
     	});
 	}
 	return htmlConfig;
-};
+}
 
 exports.getFileName = ()=> {
 	if (NODE_ENV === 'DEV') {
@@ -29,7 +29,7 @@ exports.getFileName = ()=> {
 	} else {
 		return '[name].[chunkhash:8].js';
 	}
-};
+}
 
 exports.getExtractCSSName = (env = 'DEV')=> {
 	if (NODE_ENV === 'DEV') {
@@ -37,6 +37,19 @@ exports.getExtractCSSName = (env = 'DEV')=> {
 		// return 'base.[contenthash:8].css';
 	} else {
 		return 'base.[contenthash:8].css';
+	}
+}
+
+exports.getHtmlPlugin = (config) => {
+	if (NODE_ENV === 'DEV') {
+		return config;
+	} else {
+		config.minify = {
+			removeComments: true,
+			collapseWhitespace: true,
+			removeAttributeQuotes: true
+		};
+		return config;
 	}
 }
 
