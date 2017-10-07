@@ -36,7 +36,7 @@ const webpackConfig = {
     output: {
       filename: utils.getFileName(),
       path: DIST_PATH,
-      publicPath: '/'
+      publicPath: utils.getPublicPath()
     },
     module: {
 			rules: [
@@ -133,6 +133,7 @@ const webpackConfig = {
 			alias: {
 				SCRIPTS: SCRIPTS_PATH,
 				STYLES: STYLES_PATH,
+				SRC: SRC_PATH
 			}
     }
 };

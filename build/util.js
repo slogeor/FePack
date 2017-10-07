@@ -26,18 +26,16 @@ exports.generateHtmlPlugin = (config) => {
 exports.getFileName = ()=> {
 	if (NODE_ENV === 'DEV') {
 		return '[name].js';
-	} else {
-		return '[name].[chunkhash:8].js';
 	}
+	return '[name].[chunkhash:8].js';
 }
 
 // 输出 css 的格式
 exports.getExtractCSSName = (env = 'DEV')=> {
 	if (NODE_ENV === 'DEV') {
 		return 'base.css';
-	} else {
-		return 'base.[contenthash:8].css';
 	}
+	return 'base.[contenthash:8].css';
 }
 
 // html配置
@@ -50,4 +48,12 @@ exports.getHtmlPlugin = (config) => {
 		};
 	}
 	return config;
+}
+
+// publicPath
+exports.getPublicPath = () => {
+	if (NODE_ENV === 'DEV') {
+		return '/';
+	}
+	return 'http://127.0.0.1:8080';
 }

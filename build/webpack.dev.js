@@ -8,9 +8,18 @@ const constant = require('./constant.js');
 const webpackConfig = merge(common, {
 	devtool: 'cheap-module-eval-source-map',
 	devServer:{
-		contentBase: constant.DIST_DIR,
+		contentBase: constant.SRC_PATH,
 		inline: true,
-		hot:true
+		hot:true,
+		proxy: {
+			'/api': {
+				target: 'http://127.0.0.1:8080/json',
+				pathRewrite: {
+					'^/api' : ''
+				},
+				changeOrigin: true
+			}
+		}
 	}
 });
 
