@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // CSS 压缩
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+// 通用配置
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {

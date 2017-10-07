@@ -2,8 +2,10 @@
 const merge = require('webpack-merge');
 // 通用的配置
 const common = require('./webpack.common.js');
-// 配置文件
+// 常量
 const constant = require('./constant.js');
+// 配置文件
+const config = require('./config.js');
 
 const webpackConfig = merge(common, {
 	devtool: 'cheap-module-eval-source-map',
@@ -13,7 +15,7 @@ const webpackConfig = merge(common, {
 		hot:true,
 		proxy: {
 			'/api': {
-				target: 'http://127.0.0.1:8080/json',
+				target: config.apiHost + '/json',
 				pathRewrite: {
 					'^/api' : ''
 				},

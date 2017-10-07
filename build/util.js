@@ -1,5 +1,7 @@
 const glob = require('glob');
 const path = require('path');
+const config = require('./config.js');
+
 const NODE_ENV = process.env.NODE_ENV;
 
 // 获取全路径
@@ -55,5 +57,5 @@ exports.getPublicPath = () => {
 	if (NODE_ENV === 'DEV') {
 		return '/';
 	}
-	return 'http://127.0.0.1:8080';
+	return config.assestUrl;
 }
