@@ -10,14 +10,14 @@ exports.fullPath = function(dir) {
 // 生成模板配置文件
 exports.generateHtmlPlugin = (config) => {
 	const htmlConfig = [];
-    for (let key in config) {
-    	const { chunks, title, filename } = config[key];
-      	htmlConfig.push({
-    		chunks,
-    		title,
-        	filename,
-        	inject: true,
-    	});
+	for (let key in config) {
+		const { chunks, title, filename } = config[key];
+		htmlConfig.push({
+			chunks,
+			title,
+			filename,
+			inject: true,
+		});
 	}
 	return htmlConfig;
 }
@@ -26,7 +26,6 @@ exports.generateHtmlPlugin = (config) => {
 exports.getFileName = ()=> {
 	if (NODE_ENV === 'DEV') {
 		return '[name].js';
-		// return '[name].[chunkhash:8].js';
 	} else {
 		return '[name].[chunkhash:8].js';
 	}
@@ -36,7 +35,6 @@ exports.getFileName = ()=> {
 exports.getExtractCSSName = (env = 'DEV')=> {
 	if (NODE_ENV === 'DEV') {
 		return 'base.css';
-		// return 'base.[contenthash:8].css';
 	} else {
 		return 'base.[contenthash:8].css';
 	}

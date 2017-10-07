@@ -11,6 +11,8 @@
 * 引入 sourceMap，支持 JS、CSS、SASS
 * 对文件使用 hash 命名，做强缓存
 * 压缩HTML、CSS、JS
+* 引入 eslint
+
 
 ### demo
 
