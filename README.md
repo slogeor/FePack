@@ -12,7 +12,7 @@
 * 对文件使用 hash 命名，做强缓存
 * 压缩HTML、CSS、JS
 * 引入 eslint
-
+* 引入 fetch
 
 ### demo
 
